@@ -32,10 +32,10 @@ Manage users
 ---------------------------
 
 ```console
-dc run --rm docker-io-proxy /scripts/add user password
-dc run --rm docker-io-proxy /scripts/chp user password
-dc run --rm docker-io-proxy /scripts/list
-dc run --rm docker-io-proxy /scripts/del user
+dc run --rm telegram-proxy /scripts/add user password
+dc run --rm telegram-proxy /scripts/chp user password
+dc run --rm telegram-proxy /scripts/list
+dc run --rm telegram-proxy /scripts/del user
 ```
 
 > Note: `dc` is alias for `docker-compose`
