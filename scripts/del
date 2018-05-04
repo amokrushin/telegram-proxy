@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+ARG_USER=${1}
+
+if [ x"${ARG_USER}" = "x" ]; then
+    echo "Usage:"
+    echo "$0 USER"
+    exit 1
+fi
+
+deluser "${ARG_USER}"
+

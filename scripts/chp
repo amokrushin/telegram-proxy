@@ -1,0 +1,31 @@
+#!/bin/sh
+
+set -e
+
+ARG_USER=${1}
+ARG_PASSWORD=${2}
+
+HOST=${HOST:-localhost}
+PORT=${PORT:-1080}
+
+if [ x"${ARG_USER}" = "x" ]; then
+    echo "Usage:"
+    echo "$0 USER [PASSWORD]"
+    exit 1
+fi
+
+if [ x"${ARG_PASSWORD}" = "x" ]; then
+    PASSWORD=`apg -M NCL -m 16 -x 16 -n 1`
+else
+    PASSWORD="${ARG_PASSWORD}"
+fi
+
+if [ x"${PASSWORD}" = "x" ]; then
+    echo "Usage:"
+    echo "$0 USER [PASSWORD]"
+    exit 1
+fi
+
+echo "${ARG_USER}:${PASSWORD}" | chpasswd -c SHA512
+
+echo "tg://socks?&user=${ARG_USER}&pass=${PASSWORD}&port=${PORT}&server=${HOST}"
